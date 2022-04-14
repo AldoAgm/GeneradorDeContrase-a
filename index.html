@@ -7,7 +7,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <meta charset="UTF-8">
-        <title>Ejercicio 1</title>
+        <title>Generador de Contraseña</title>
     </head>
     <body>
         <!--crea un generador de contraseñas-->
@@ -15,10 +15,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>Generador de contraseña</h1>
-                    <form action="ss.php" method="post">
+                   
                         <div class="form-group">
                             <label for="numero">Numero de caracteres</label>
-                            <input type="number" class="form-control" id="numero" name="numero" min="1" max="20" required>
+                            <input type="number" class="form-control" id="numero" name="numero" min="1" required>
                         </div>
                         <div class="form-group">
                             <label for="tipo">Tipo de contraseña</label>
@@ -30,22 +30,35 @@
                                 <option value="5">Todo</option>
                             </select>
                         </div>
+                        <p></p>
                          <!--crea un boton-->
-                    <button type="submit" class="btn btn-primary" onclick="generar()">Generar</button>
-                    </form>
+                    <button class="btn btn-primary" onclick="generar()">Generar</button>
+                    <p></p>
+                 
                    
                     <!--crea un textbox -->
                     <input type="text" id="contra" name="texto" value="" class="form-control">
                       <!--copia el texto del textbox-->
                       <p></p>
-                    <button type="submit" class="btn btn-success" onclick="copiar()">Copiar</button>
+                    <button type="submit" id="copiar" class="btn btn-success" onclick="copiar()">Copiar</button>
 
+                
                 </div>
             </div>
         <script>
             //genera una contraseña con los datos ingresados
             function generar() {
-                var numero = document.getElementById("numero").value;
+                var texto = document.getElementById("numero").value;
+                if (texto == "") {
+                    Swal.fire({
+                        title: 'Opps!',
+                        text: 'Debe ingresar un numero de caracteres',
+                        icon: 'info',
+                        confirmButtonText: 'Aceptar'
+                    })
+                }else{
+
+                    var numero = document.getElementById("numero").value;
                 var tipo = document.getElementById("tipo").value;
                 var contraseña = "";
                 var todo = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;':,./<>?";
@@ -78,18 +91,33 @@
                 }
                //mostrar la contraseña generada en el textbox
                 document.getElementById("contra").value = contraseña;
+                }
+
+                
+                
 
 
             }
-            //copia el texto del textbox
+            //si el textbox esta vacio, muestra una alerta
             function copiar() {
-                var copyText = document.getElementById("contra");
+                var texto = document.getElementById("contra").value;
+                if (texto == "") {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'No hay nada que copiar',
+                        icon: 'error',
+                        confirmButtonText: 'Aceptar'
+                    })
+                } else {
+                    //copia el texto del textbox
+                    var copyText = document.getElementById("contra");
                 copyText.select();
                 document.execCommand("copy");
                 Swal.fire('Copiado al portapapeles')
-
+                }
             }
-
+          
+            
         </script>
         
     </body>
