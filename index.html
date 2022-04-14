@@ -7,14 +7,14 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <meta charset="UTF-8">
-        <title>Generador de contraseñas</title>
+        <title>Ejercicio 1</title>
     </head>
     <body>
         <!--crea un generador de contraseñas-->
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Generador de contraseñas</h1>
+                    <h1>Generador de contraseña</h1>
                     <form action="ss.php" method="post">
                         <div class="form-group">
                             <label for="numero">Numero de caracteres</label>
@@ -30,10 +30,10 @@
                                 <option value="5">Todo</option>
                             </select>
                         </div>
-                        
-                    </form>
-                    <!--crea un boton-->
+                         <!--crea un boton-->
                     <button type="submit" class="btn btn-primary" onclick="generar()">Generar</button>
+                    </form>
+                   
                     <!--crea un textbox -->
                     <input type="text" id="contra" name="texto" value="" class="form-control">
                       <!--copia el texto del textbox-->
@@ -89,8 +89,6 @@
                 Swal.fire('Copiado al portapapeles')
 
             }
-           
-
 
         </script>
         
